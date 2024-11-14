@@ -72,6 +72,9 @@ It allows you to place and do several things: <br>
 * **Tavern & Grog** <br>
 Yes, that's right. You can sit down in a nice tavern and buy some grog for you and your friends. Cheers!
 
+* **Blackjack** <br>
+Play Blackjack with your friends at one table!
+
 * **Minigames** <br>
 You can find a list of minigames using `/minigames`. When joining a minigame, your complete tee status including position, weapons, extras, etc. will be saved and can be loaded later when leaving the minigame again using `/leave`. Nothing will be missed and you can continue playing as before.
 

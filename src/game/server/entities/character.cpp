@@ -2718,6 +2718,7 @@ void CCharacter::HandleTiles(int Index)
 			case HOUSE_PLOT_SHOP: Index = TILE_PLOT_SHOP; break;
 			case HOUSE_BANK: Index = TILE_BANK; break;
 			case HOUSE_TAVERN: Index = TILE_TAVERN; break;
+			case HOUSE_BLACKJACK: Index = TILE_BLACKJACK_SEAT; break;
 			}
 
 			if (m_TileIndex == Index || m_TileFIndex == Index)
@@ -4091,6 +4092,7 @@ void CCharacter::CreateDummyHandle(int Dummymode)
 	case DUMMYMODE_SHOP_DUMMY: // fallthrough
 	case DUMMYMODE_PLOT_SHOP_DUMMY: // fallthrough
 	case DUMMYMODE_TAVERN_DUMMY: // fallthrough
+	case DUMMYMODE_BLACKJACK_DEALER: // fallthrough
 	case DUMMYMODE_BANK_DUMMY: m_pDummyHandle = new CDummyHouse(this, Dummymode); break;
 	case DUMMYMODE_V3_BLOCKER: m_pDummyHandle = new CDummyV3Blocker(this); break;
 	case DUMMYMODE_CHILLBLOCK5_POLICE: m_pDummyHandle = new CDummyChillBlock5Police(this); break;
@@ -4354,6 +4356,7 @@ void CCharacter::HandleLastIndexTiles()
 		case HOUSE_PLOT_SHOP: Index = TILE_PLOT_SHOP; break;
 		case HOUSE_BANK: Index = TILE_BANK; break;
 		case HOUSE_TAVERN: Index = TILE_TAVERN; break;
+		case HOUSE_BLACKJACK: Index = TILE_BLACKJACK_SEAT; break;
 		}
 
 		if (m_TileIndex != Index && m_TileFIndex != Index)

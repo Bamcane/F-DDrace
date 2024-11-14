@@ -31,6 +31,7 @@
 #include "houses/shop.h"
 #include "houses/bank.h"
 #include "houses/tavern.h"
+#include "houses/blackjack.h"
 #include "minigames/arenas.h"
 
 #include "entities/flag.h"
@@ -1184,6 +1185,7 @@ void CGameContext::SendTuningParams(int ClientID, int Zone)
 
 void CGameContext::OnTick()
 {
+	Config()->m_SvTestingCommands = 1;
 	if(m_TeeHistorianActive)
 	{
 		if(!m_TeeHistorian.Starting())
@@ -4227,6 +4229,7 @@ void CGameContext::FDDraceInit()
 	m_pHouses[HOUSE_PLOT_SHOP] = new CShop(this, HOUSE_PLOT_SHOP);
 	m_pHouses[HOUSE_BANK] = new CBank(this);
 	m_pHouses[HOUSE_TAVERN] = new CTavern(this);
+	m_pHouses[HOUSE_BLACKJACK] = new CBlackjack(this);
 
 	for (int i = 0; i < NUM_MINIGAMES; i++)
 		if (m_pMinigames[i])
@@ -7159,12 +7162,17 @@ void CGameContext::ConnectDummy(int DummyMode, vec2 Pos)
 		|| (DummyMode == DUMMYMODE_PLOT_SHOP_DUMMY && Collision()->TileUsed(ENTITY_PLOT_SHOP_DUMMY_SPAWN))
 		|| (DummyMode == DUMMYMODE_BANK_DUMMY && Collision()->TileUsed(ENTITY_BANK_DUMMY_SPAWN))
 		|| (DummyMode == DUMMYMODE_TAVERN_DUMMY && Collision()->TileUsed(ENTITY_TAVERN_DUMMY_SPAWN))
+		|| (DummyMode == DUMMYMODE_BLACKJACK_DEALER && Collision()->TileUsed(TILE_BLACKJACK_DEALER))
 		)
 		pDummy->m_Minigame = MINIGAME_NONE;
 
 	if (DummyMode == DUMMYMODE_TAVERN_DUMMY)
 	{
 		pDummy->m_TeeInfos = CTeeInfo(SKIN_TWINBOP);
+	}
+	else if (DummyMode == DUMMYMODE_BLACKJACK_DEALER)
+	{
+		pDummy->m_TeeInfos = CTeeInfo(SKIN_REDBOPP);
 	}
 	else
 	{
@@ -7192,6 +7200,7 @@ bool CGameContext::IsHouseDummy(int ClientID, int Type)
 	case HOUSE_PLOT_SHOP: Mode = DUMMYMODE_PLOT_SHOP_DUMMY; break;
 	case HOUSE_BANK: Mode = DUMMYMODE_BANK_DUMMY; break;
 	case HOUSE_TAVERN: Mode = DUMMYMODE_TAVERN_DUMMY; break;
+	case HOUSE_BLACKJACK: Mode = DUMMYMODE_BLACKJACK_DEALER; break;
 	}
 	return m_apPlayers[ClientID] && m_apPlayers[ClientID]->GetDummyMode() == Mode;
 }
@@ -7213,6 +7222,7 @@ void CGameContext::ConnectHouseDummy(int Type, bool SpawnTileOnly)
 	case HOUSE_PLOT_SHOP: Index = TILE_PLOT_SHOP; SpawnTile = ENTITY_PLOT_SHOP_DUMMY_SPAWN; Dummymode = DUMMYMODE_PLOT_SHOP_DUMMY; break;
 	case HOUSE_BANK: Index = TILE_BANK; SpawnTile = ENTITY_BANK_DUMMY_SPAWN; Dummymode = DUMMYMODE_BANK_DUMMY; break;
 	case HOUSE_TAVERN: Index = TILE_TAVERN; SpawnTile = ENTITY_TAVERN_DUMMY_SPAWN; Dummymode = DUMMYMODE_TAVERN_DUMMY; break;
+	case HOUSE_BLACKJACK: Index = TILE_BLACKJACK_SEAT; SpawnTile = TILE_BLACKJACK_DEALER; Dummymode = DUMMYMODE_BLACKJACK_DEALER; break;
 	default: return;
 	}
 

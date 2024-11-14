@@ -17,6 +17,7 @@ CHouse::CHouse(CGameContext *pGameServer, int Type)
 	case HOUSE_PLOT_SHOP: m_pHeadline = "~ P L O T - S H O P ~"; break;
 	case HOUSE_BANK: m_pHeadline = "~ B A N K ~"; break;
 	case HOUSE_TAVERN: m_pHeadline = "~ T A V E R N ~"; break;
+	case HOUSE_BLACKJACK: m_pHeadline = "~ B L A C K J A C K ~"; break;
 	default: m_pHeadline = "~ I N V A L I D ~";
 	}
 

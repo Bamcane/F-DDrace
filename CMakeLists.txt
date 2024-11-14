@@ -1578,6 +1578,8 @@ set_src(GAME_SERVER GLOB_RECURSE src/game/server
   gameworld.h
   houses/bank.cpp
   houses/bank.h
+  houses/blackjack.cpp
+  houses/blackjack.h
   houses/house.cpp
   houses/house.h
   houses/shop.cpp

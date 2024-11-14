@@ -1442,6 +1442,7 @@ void CGameContext::ConDummymode(IConsole::IResult *pResult, void *pUserData)
 		pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "console", "[98] Plot Shop Bot");
 		pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "console", "[97] Bank Bot");
 		pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "console", "[96] Tavern Bot");
+		pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "console", "[187] Blackjack Dealer");
 	}
 }
 
